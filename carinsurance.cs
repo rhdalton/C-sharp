@@ -33,14 +33,14 @@ namespace CarInsurance
             while (valid_answer != true)
             {
                 Console.WriteLine("Have your ever had a DUI? Y/N");
-                str_num = Console.ReadLine();
+                str_num = Console.ReadLine().ToLower();
 
-                if (str_num.ToLower().Equals("y"))
+                if (str_num == "y")
                 {
                     app_dui = true;
                     valid_answer = true;
                 }
-                else if (str_num.ToLower().Equals("n")) {
+                else if (str_num == "n") {
                     app_dui = false;
                     valid_answer = true;
                 }
