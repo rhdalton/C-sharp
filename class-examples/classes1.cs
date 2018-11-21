@@ -9,8 +9,10 @@ namespace Classes
             Employee employee = new Employee();
             employee.FirstName = "Sample";
             employee.LastName = "Student";
+            employee.Id = 9;
 
             employee.SayName();
+            employee.EmployeeId();
 
             Console.ReadLine();
         }
@@ -30,5 +32,10 @@ namespace Classes
     public class Employee : Person
     {
         public int Id { get; set; }
+
+        public void EmployeeId()
+        {
+            Console.WriteLine("ID: {0}", Id);
+        }
     }
 }
