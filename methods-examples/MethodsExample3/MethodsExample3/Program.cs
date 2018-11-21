@@ -1,6 +1,6 @@
-using System;
+﻿using System;
 
-namespace MathOperationClass
+namespace MethodsExample3
 {
     public class Program
     {
@@ -8,7 +8,7 @@ namespace MathOperationClass
         {
             bool validInput = false;
             int num1 = 0, num2 = 99, result = 0;
-                  
+
             while (!validInput)
             {
                 try
@@ -24,7 +24,7 @@ namespace MathOperationClass
             }
 
             validInput = false;
-            while(!validInput)
+            while (!validInput)
             {
                 try
                 {
@@ -53,12 +53,4 @@ namespace MathOperationClass
             Console.ReadLine();
         }
     }
-
-    public class MathOperation
-    {
-        public int OperationOne(int num1, int num2 = 99)
-        {
-            return num1 * num2;
-        }
-    }    
 }
