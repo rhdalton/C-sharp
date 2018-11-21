@@ -6,10 +6,7 @@ namespace Classes
     {
         static void Main(string[] args)
         {
-            Employee employee = new Employee();
-            employee.FirstName = "Sample";
-            employee.LastName = "Student";
-            employee.Id = 9;
+            Employee employee = new Employee() { FirstName = "Sample", LastName = "Student", Id = 9 };
 
             employee.SayName();
             employee.EmployeeId();
