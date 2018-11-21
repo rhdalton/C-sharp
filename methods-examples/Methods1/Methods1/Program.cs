@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Methods1
+namespace MethodsExample1
 {
     public class Program
     {
