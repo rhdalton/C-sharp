@@ -36,7 +36,7 @@ namespace LambdaExpressions
                         
             foreach(Employee employee in nameJoe)
             {
-                Console.WriteLine("Name: " + employee.FirstName + " " + employee.LastName + " Id: " + employee.Id);
+                Console.WriteLine("Name: {0} {1} Id: {2}", employee.FirstName, employee.LastName, employee.Id);
             }
 
             /* get Joe employees with Lambda function */
@@ -48,7 +48,7 @@ namespace LambdaExpressions
             Console.WriteLine("\nEmployees with Ids greater than 5:");
             foreach (Employee employee in EmployeeIds)
             {
-                Console.WriteLine("Name: " + employee.FirstName + " " + employee.LastName + " Id: " + employee.Id);
+                Console.WriteLine("Name: {0} {1} Id: {2}", employee.FirstName, employee.LastName, employee.Id);
             }
             Console.ReadLine();           
         }
