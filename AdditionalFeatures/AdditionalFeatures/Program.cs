@@ -7,10 +7,13 @@ namespace AdditionalFeatures
     {
         static void Main(string[] args)
         {
+            // constant variable
             const string var = "Bob Smith";
 
+            // define variable with var
             var dict = new Dictionary<int, int>();
 
+            // using constructor chains
             Constructors con1 = new Constructors(var);
             Console.WriteLine("Name: {0}  Id: {1}  isTrue: {2}", con1.Name, con1.Id, con1.isTrue);
 
