@@ -16,7 +16,7 @@ namespace GeneralExceptions
 
                     if (age < 1)
                     {
-                        throw new OtherExceptions();
+                        throw new OtherExceptions("Age can't be lower than 1.");
                     }
                     else
                     {
@@ -30,9 +30,9 @@ namespace GeneralExceptions
                 {
                     Console.WriteLine("You did not enter a valid number with no decimals.");
                 }
-                catch (OtherExceptions)
+                catch (OtherExceptions ex)
                 {
-                    Console.WriteLine("Age can't be lower than 1.");
+                    Console.WriteLine(ex.Message);
                 }
                 catch (Exception ex)
                 {
