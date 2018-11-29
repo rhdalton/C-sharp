@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="InsuranceQuotesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="carmake">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="car_make" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="quotes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fname" Type="varchar" MaxLength="25" />
+          <Property Name="lname" Type="varchar" MaxLength="30" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="dob" Type="date" />
+          <Property Name="car_year" Type="smallint" />
+          <Property Name="car_make" Type="int" />
+          <Property Name="car_model" Type="varchar" MaxLength="20" />
+          <Property Name="had_dui" Type="bit" />
+          <Property Name="sp_ticket" Type="smallint" />
+          <Property Name="coverage" Type="varchar" MaxLength="5" />
+          <Property Name="premium" Type="int" />
+        </EntityType>
+        <EntityContainer Name="InsuranceQuotesModelStoreContainer">
+          <EntitySet Name="carmake" EntityType="Self.carmake" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="quotes" EntityType="Self.quotes" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InsuranceQuotesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="carmake">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="car_make" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="quote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="lname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dob" Type="DateTime" Precision="0" />
+          <Property Name="car_year" Type="Int16" />
+          <Property Name="car_make" Type="Int32" />
+          <Property Name="car_model" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="had_dui" Type="Boolean" />
+          <Property Name="sp_ticket" Type="Int16" />
+          <Property Name="coverage" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="premium" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="InsuranceQuotesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="carmakes" EntityType="Self.carmake" />
+          <EntitySet Name="quotes" EntityType="Self.quote" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InsuranceQuotesModelStoreContainer" CdmEntityContainer="InsuranceQuotesEntities">
+          <EntitySetMapping Name="carmakes">
+            <EntityTypeMapping TypeName="InsuranceQuotesModel.carmake">
+              <MappingFragment StoreEntitySet="carmake">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="car_make" ColumnName="car_make" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="quotes">
+            <EntityTypeMapping TypeName="InsuranceQuotesModel.quote">
+              <MappingFragment StoreEntitySet="quotes">
+                <ScalarProperty Name="premium" ColumnName="premium" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="lname" ColumnName="lname" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="car_year" ColumnName="car_year" />
+                <ScalarProperty Name="car_make" ColumnName="car_make" />
+                <ScalarProperty Name="car_model" ColumnName="car_model" />
+                <ScalarProperty Name="had_dui" ColumnName="had_dui" />
+                <ScalarProperty Name="sp_ticket" ColumnName="sp_ticket" />
+                <ScalarProperty Name="coverage" ColumnName="coverage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Quote Result";
+}
+
+<div class="row no-gutters">
+    <div class="card col-sm-12 col-md-10 col-lg-7 col-xl-6 shadow mx-auto">
+        <div class="card-header text-center"><h3>Your Quote Offer</h3></div>
+        <div class="card-body">
+            <p><strong>@Model.fname @Model.lname</strong>, thank you for applying for a car insurance quote.</p>
+            <p>After reviewing your information, we can give you a quote of:</p>
+            <div class="text-center"><span class="h2">$@Model.premium</span> / month</div>
+        </div>
+    </div>
+</div>

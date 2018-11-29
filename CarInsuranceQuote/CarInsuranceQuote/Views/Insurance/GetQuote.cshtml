@@ -1,0 +1,164 @@
+﻿@using CarInsuranceQuote.Models;
+@{
+    ViewBag.Title = "GetQuote";
+
+    string sel1 = "", sel2 = "", sel3 = "", sel4 = "";
+    if (Model.UserQuote.dui == 1) { sel1 = "checked"; }
+    else if (Model.UserQuote.dui == 2) { sel2 = "checked"; }
+    if(Model.UserQuote.coverage == "full") { sel3 = "checked"; }
+    else if(Model.UserQuote.coverage == "limit") { sel4 = "checked"; }
+}
+
+<div class="row no-gutters">
+    <div class="card col-sm-12 col-md-10 col-lg-7 col-xl-6 shadow mx-auto">
+        <div class="card-header text-center"><h3>Get a Car Insurance Quote</h3></div>
+        <div class="card-body">
+            <div class="alert alert-danger @ViewBag.ShowError" role="alert">
+                All fields required, please check again.
+            </div>
+            @using (Html.BeginForm("GetQuote", "Insurance", FormMethod.Post))
+            {
+                <div class="form-group row">
+                    <label for="inputFirstname" class="col-4 col-form-label">First Name</label>
+                    <div class="col-8">
+                        <input type="text" class="form-control" id="inputFirstname" name="fname" value="@Model.UserQuote.fname" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputLastname" class="col-4 col-form-label">Last Name</label>
+                    <div class="col-8">
+                        <input type="text" class="form-control" id="inputLastname" name="lname" value="@Model.UserQuote.lname" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputEmail" class="col-4 col-form-label">Email</label>
+                    <div class="col-8">
+                        <input type="email" class="form-control" id="inputEmail" name="email" value="@Model.UserQuote.email" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputDob" class="col-4 col-form-label">Date of Birth</label>
+                    <div class="col-8">
+                        <div class="form-row">
+                            <div class="col-auto">
+                                <select class="form-control" id="inputDobMonth" name="dobm">
+                                    <option value="0">Month</option>
+                                    @for (int i = 1; i <= 12; i++)
+                                    {
+                                        string sel = (i == Model.UserQuote.dobm) ? "selected" : "";
+                                        <option @sel>@i</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <select class="form-control" id="inputDobDay" name="dobd">
+                                    <option value="0">Day</option>
+                                    @for (int i = 1; i <= 31; i++)
+                                    {
+                                        string sel = (i == Model.UserQuote.dobd) ? "selected" : "";
+                                        <option @sel>@i</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <select class="form-control" id="inputDobYear" name="doby">
+                                    <option value="0">Year</option>
+                                    @for (int i = DateTime.Now.Year; i >= 1900; i--)
+                                    {
+                                        string sel = (i == Model.UserQuote.doby) ? "selected" : "";
+                                        <option @sel>@i</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputCarYear" class="col-4 col-form-label">Car Year</label>
+                    <div class="col-8">
+                        <div class="form-row">
+                            <div class="col-auto">
+                                <select class="form-control" id="inputCarYear" name="caryear">
+                                    <option value="0">--</option>
+                                    @for (int i = DateTime.Now.Year; i >= 1970; i--)
+                                    {
+                                        string sel = (i == Model.UserQuote.caryear) ? "selected" : "";
+                                        <option @sel>@i</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputCarMake" class="col-4 col-form-label">Car Make</label>
+                    <div class="col-8">
+                        <div class="form-row">
+                            <div class="col-auto">
+                                <select class="form-control" id="inputCarMake" name="carmake">
+                                    <option value="0">--</option>
+                                    @foreach (var carmake in Model.Carmakes)
+                                    {
+                                        string sel = (carmake.id == Model.UserQuote.carmake) ? "selected" : "";
+                                        <option value="@carmake.id" @sel>@carmake.car_make</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputCarModel" class="col-4 col-form-label">Car Model</label>
+                    <div class="col-8">
+                        <input type="text" class="form-control" id="inputCarModel" name="carmodel" value="@Model.UserQuote.carmodel" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4 col-form-label">Have you had a DUI?</div>
+                    <div class="col-8">
+                        <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" name="dui" id="inputDui1" value="1" @sel1 />
+                            <label class="form-check-label" for="inputDui1">Yes</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="dui" id="inputDui2" value="2" @sel2 />
+                            <label class="form-check-label" for="inputDui2">No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4 col-form-label">How many speeding tickets do you have?</div>
+                    <div class="col-8">
+                        <div class="form-row mt-2">
+                            <div class="col-auto">
+                                <select class="form-control" id="inputSpTickets" name="tickets">
+                                    @for (int i = 0; i <= 10; i++)
+                                    {
+                                        string sel = (i == Model.UserQuote.tickets) ? "selected" : "";
+                                        <option @sel>@i</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4 col-form-label">Type of Coverage</div>
+                    <div class="col-8">
+                        <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" name="coverage" id="inputCoveragefull" value="full" @sel3 />
+                            <label class="form-check-label" for="inputCoveragefull">Full Coverage</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="coverage" id="inputCoveragelimit" value="limit" @sel4 />
+                            <label class="form-check-label" for="inputCoveragelimit">Limited Liability</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row mx-auto">
+                    <button type="submit" class="btn btn-primary">Get Quote</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
