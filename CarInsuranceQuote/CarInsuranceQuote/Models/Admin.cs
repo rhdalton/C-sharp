@@ -12,7 +12,8 @@ namespace CarInsuranceQuote.Models
         {
             using (InsuranceQuotesEntities db = new InsuranceQuotesEntities())
             {
-                var quotes = db.quotes.Take(limit);
+                var quotes = db.quotes.OrderByDescending(x => x.Id).Take(limit);
+                //var quotes = (from x in db.quotes orderby x.Id descending select x).Take(limit);
                 var quotelistVm = new List<AdminQuoteListVm>();
                 foreach (var quote in quotes)
                 {
